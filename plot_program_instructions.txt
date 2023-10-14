@@ -1,0 +1,15 @@
+First of all, if you have another way of generating figures that works well for you, feel free to use that! This program is just provided in case it can make the process easier for you.
+
+Assuming you have Python installed (either Python 2 or 3 should be okay), you can run the program on the commandline with a command like:
+python plot_results.py -i <input_text_file> -o <output_plot_file>
+
+Where <input_text_file> should be replaced with the filename of the results file you want to plot, and <output_plot_file> should be the filename that you want to use to save the plot that gets generated (note that the program generates PNG plots). This assumes that you are running the program from the same directory as your input files (input_text_file can be a path to the file if that’s not the case).
+
+You can also use a -t option to give the plot a title, if you want.
+
+The program assumes that your results file is in a plain text file with a format like:
+event_number  queue_len   dropped_packets
+
+That is, on each line it expects 3 integers, where the first is the number (sequence) of the event, the second is the length of the queue after that event, and the third is the total number of packets that have been dropped so far.
+
+If your results file is formatted differently (e.g. values in a different order or comma-separated instead of whitespace-separated), you can modify the code in lines 26-29. Note that by default the "split" method uses whitespace as the separator, but you can pass in the delimiter as a parameter as well (e.g. line.split(",") ) for comma separated values.
